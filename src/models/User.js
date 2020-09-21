@@ -1,19 +1,20 @@
-const {model, Schema} = require('mongoose');
+const { model, Schema } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
- const userScheme = new Schema({
-    username:{
+const userScheme = new Schema({
+    username: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true
     },
-    password:{
+    password: {
         type: String,
         required: true
-    }}, {
+    }
+}, {
     timestamps: true // It creates createdAt and updatedAt fields automatically
 })
 
@@ -23,7 +24,7 @@ userScheme.methods.encryptPass = async password => {
     return await bcrypt.hash(password, salt);
 }
 
-userScheme.methods.matchPass = async function(password) {
+userScheme.methods.matchPass = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
 

@@ -1,11 +1,11 @@
-const {model, Schema} = require('mongoose');
+const { model, Schema } = require('mongoose');
 
- const tutorialScheme = new Schema({
-    title:{
+const tutorialScheme = new Schema({
+    title: {
         type: String,
         required: true
     },
-    description:{
+    description: {
         type: String,
         required: true
     }
