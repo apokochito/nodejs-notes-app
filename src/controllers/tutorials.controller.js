@@ -14,7 +14,7 @@ tutorial.createNewTutorial = async (request, response) => {
         const newTutorial = new Tutorial({ title, description });
         console.log(newTutorial);
         await newTutorial.save();
-        response.render('tutorials/newTutorialForm');
+        response.redirect('/tutorials');
     } catch (err) {
         return response.send(err);
     }
@@ -33,8 +33,9 @@ tutorial.updateTutorial = (request, response) => {
     response.send('Send tutorial')
 }
 
-tutorial.deleteTutorial = (request, response) => {
-    response.send('Tutorial deleted')
+tutorial.deleteTutorial = async (request, response) => {
+    await Tutorial.findByIdAndDelete(request.params.id);
+    response.redirect('/tutorials');
 }
 
 module.exports = tutorial;

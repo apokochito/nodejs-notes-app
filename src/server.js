@@ -3,6 +3,7 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const session = require('express-session');
 const morgan = require('morgan');
+const override = require('method-override');
 
 // Initializations
 const app = express();
@@ -37,6 +38,7 @@ app.use(session(sessionConfig));
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false })); // Convert each received resource to json
+app.use(override('_method'))
 
 // Global Variables
 

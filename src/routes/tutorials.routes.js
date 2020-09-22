@@ -14,6 +14,6 @@ router.get('/tutorial/edit/:id', getTutorial);
 router.put('/tutorial/edit/:id', updateTutorial);
 
 // Delete tutorial
-router.delete('tutorial/delete/:id', deleteTutorial)
+router.delete('/tutorial/delete/:id', deleteTutorial)
 
 module.exports = router;
