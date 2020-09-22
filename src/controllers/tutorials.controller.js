@@ -25,12 +25,15 @@ tutorial.getTutorials = async (request, response) => {
     response.render('tutorials/allTutorials', { tutorials });
 }
 
-tutorial.getTutorial = (request, response) => {
-    response.send('Render edit form')
+tutorial.getTutorial = async (request, response) => {
+    const tutorial = await Tutorial.findById(request.params.id).lean();
+    response.render('tutorials/editTutorial', { tutorial });
 }
 
-tutorial.updateTutorial = (request, response) => {
-    response.send('Send tutorial')
+tutorial.updateTutorial = async (request, response) => {
+    const {title, description} = request.body;
+    await Tutorial.findByIdAndUpdate(request.params.id, {title, description});
+    response.redirect('/tutorials');
 }
 
 tutorial.deleteTutorial = async (request, response) => {
