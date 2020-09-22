@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose');
 
-const tutorialScheme = new Schema({
+const tutorialSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -13,4 +13,4 @@ const tutorialScheme = new Schema({
     timestamps: true // It creates createdAt and updatedAt fields automatically
 })
 
-module.exports = model('Tutorial', tutorialScheme);
+module.exports = model('Tutorial', tutorialSchema);

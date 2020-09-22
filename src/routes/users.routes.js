@@ -11,7 +11,7 @@ router.get('/signin', getSingInForm);
 router.post('/signin', signIn);
 
 // Logout user
-router.get('/logout', logOut);
+router.get('/signout', logOut);
 
 // Delete user
 //router.delete('/tutorial/delete/:id', deleteTutorial)
