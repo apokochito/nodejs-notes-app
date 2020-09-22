@@ -4,6 +4,8 @@ const handlebars = require('express-handlebars');
 const session = require('express-session');
 const morgan = require('morgan');
 const override = require('method-override');
+const flash = require('connect-flash');
+const { request, response } = require('express');
 
 // Initializations
 const app = express();
@@ -39,12 +41,23 @@ app.use(session(sessionConfig));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false })); // Convert each received resource to json
 app.use(override('_method'))
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(flash());
 
 // Global Variables
+app.use((request, response, next) => {
+    response.locals.success_msg = request.flash('success_msg');
+    next();
+})
 
 // Routes
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/tutorials.routes'));
+app.use(require('./routes/users.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public'))); // Any browser will access easily to them

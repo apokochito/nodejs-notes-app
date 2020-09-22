@@ -14,6 +14,7 @@ tutorial.createNewTutorial = async (request, response) => {
         const newTutorial = new Tutorial({ title, description });
         console.log(newTutorial);
         await newTutorial.save();
+        request.flash('success_msg', 'Tutorial Created Successfully!');
         response.redirect('/tutorials');
     } catch (err) {
         return response.send(err);
@@ -31,13 +32,15 @@ tutorial.getTutorial = async (request, response) => {
 }
 
 tutorial.updateTutorial = async (request, response) => {
-    const {title, description} = request.body;
-    await Tutorial.findByIdAndUpdate(request.params.id, {title, description});
+    const { title, description } = request.body;
+    await Tutorial.findByIdAndUpdate(request.params.id, { title, description });
+    request.flash('success_msg', 'Tutorial Updated Successfully!');
     response.redirect('/tutorials');
 }
 
 tutorial.deleteTutorial = async (request, response) => {
     await Tutorial.findByIdAndDelete(request.params.id);
+    request.flash('success_msg', 'Tutorial Deleted Successfully!');
     response.redirect('/tutorials');
 }
 
