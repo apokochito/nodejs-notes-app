@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const session = require('express-session');
+const morgan = require('morgan');
 
 // Initializations
 const app = express();
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(session(sessionConfig));
 
 // Middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false })); // Convert each received resource to json
 
 // Global Variables

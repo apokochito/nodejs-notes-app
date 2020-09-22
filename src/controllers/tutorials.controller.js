@@ -4,11 +4,12 @@ const { request } = require("http");
 const tutorial = {};
 
 tutorial.getTutorialForm = (request, response) => {
-    response.send('tutorial add');
+    response.render('tutorials/newTutorialForm');
 }
 
 tutorial.createNewTutorial = (request, response) => {
-    response.send('new tutorial');
+    console.log(request.body);
+    response.render('tutorials/newTutorialForm');
 }
 
 tutorial.getTutorials = (request, response) => {
