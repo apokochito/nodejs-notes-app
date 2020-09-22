@@ -1,0 +1,8 @@
+body {
+    background-image: url("../img/retro-background.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+}
+body h1 {
+    color: white;
+}

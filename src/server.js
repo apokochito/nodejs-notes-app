@@ -39,9 +39,7 @@ app.use(express.urlencoded({ extended: false })); // Convert each received resou
 // Global Variables
 
 // Routes
-app.get('/', (request, response) => {
-    response.render('index');
-})
+app.use(require('./routes/index.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public'))); // Any browser will access easily to them
