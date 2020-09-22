@@ -40,6 +40,7 @@ app.use(express.urlencoded({ extended: false })); // Convert each received resou
 
 // Routes
 app.use(require('./routes/index.routes'));
+app.use(require('./routes/tutorials.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public'))); // Any browser will access easily to them
