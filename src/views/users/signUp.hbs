@@ -1,0 +1,25 @@
+<div class="jumbotron mt-3 float-md-center offset-3" style="background-color: transparent; color:white;">
+    <h1>Account Register</h1>
+    <br>
+    <form action="/signup" method="POST">
+    <div class="form-group">
+            <label for="exampleName">Name</label>
+            <input type="text" name="name" class="form-control" id="exampleName" autofocus placeholder="Your name" value="{{name}}"">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="{{email}}"" aria-describedby="emailHelp" placeholder="Your email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Your password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" name="confirmed_password" class="form-control" id="exampleInputPassword1" placeholder="Your password again">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-secondary btn-block" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

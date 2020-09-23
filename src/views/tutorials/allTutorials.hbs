@@ -1,0 +1,20 @@
+<div class="row">
+    {{#each tutorials}}
+    <div class="col-md-3">
+        <div class="card-transparent" style="color: rgb(197, 196, 196); text-align: justify; padding-top: 30%;">
+            <div class="card-header">{{ title }}</div>
+            <div class="card-body special-card" style="background-color: rgba(94, 48, 78, 0.562); ">
+                <p class="card-text">{{ description }}
+                </p>
+            </div>
+            <div style="display: flex; padding-top: 2%;">
+                <button onclick="location.href='/tutorial/edit/{{_id}}'" class="btn btn-sm btn-block btn-outline-secondary" style="margin-right: 2%;">Edit</button>
+                <form action="/tutorial/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-sm btn-block btn-outline-secondary">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
