@@ -8,6 +8,10 @@ const tutorialSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true // It creates createdAt and updatedAt fields automatically

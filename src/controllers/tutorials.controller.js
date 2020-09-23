@@ -13,6 +13,7 @@ tutorial.createNewTutorial = async (request, response) => {
         const { title, description } = request.body;
         const newTutorial = new Tutorial({ title, description });
         console.log(newTutorial);
+        newTutorial.user = request.user.id;
         await newTutorial.save();
         request.flash('success_msg', 'Tutorial Created Successfully!');
         response.redirect('/tutorials');
@@ -22,12 +23,15 @@ tutorial.createNewTutorial = async (request, response) => {
 }
 
 tutorial.getTutorials = async (request, response) => {
-    const tutorials = await Tutorial.find().lean();
+    const tutorials = await Tutorial.find({user: request.user.id}).lean();
     response.render('tutorials/allTutorials', { tutorials });
 }
 
 tutorial.getTutorial = async (request, response) => {
     const tutorial = await Tutorial.findById(request.params.id).lean();
+    if (tutorial.user != request.user.id){
+        response.redirect('/tutorials');
+    }
     response.render('tutorials/editTutorial', { tutorial });
 }
 
@@ -39,6 +43,10 @@ tutorial.updateTutorial = async (request, response) => {
 }
 
 tutorial.deleteTutorial = async (request, response) => {
+    const tutorial = await Tutorial.findById(request.params.id).lean();
+    if (tutorial.user != request.user.id){
+        response.redirect('/tutorials');
+    }
     await Tutorial.findByIdAndDelete(request.params.id);
     request.flash('success_msg', 'Tutorial Deleted Successfully!');
     response.redirect('/tutorials');
