@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">Notes App</a>
+    <a class="navbar-brand" href="/about">/ About</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+   </div>
+   {{#if user }}
+   <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="true">Notes</button>
+
+<div class="dropdown-menu dropdown-menu-right text-center">
+  <a class="dropdown-item" href="/notes">All notes</a>
+  <a class="dropdown-item" href="/notes/add">Add note</a>
+  <a class="dropdown-item" href="/users/logout">Logout</a>
+   
+        {{else}}
+        <a class="dropdown-item text-white dropdown-menu-right" href="/users/signin">Login</a>
+          <a class="dropdown-item text-white dropdown-menu-right" href="/users/signup">Register</a>
+        </div>
+      {{/if}}
+</nav>
+<br>
+<br>
